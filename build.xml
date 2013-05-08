@@ -18,16 +18,15 @@
    <!-- use usernameWithUnderscores if you are referring to your
         username in a package specification, and your original username
 	contains hyphens that need to be replaced with underscores -->
+
    <propertyregex property="usernameWithUnderscores"  input="${env.USER}"
 		regexp="-" replace="_" global="true" />
 
 
    <property name="packagePrefix" value="edu.ucsb.cs56.S13.drawings" />
-   <property name="pconradSimple" value="${packagePrefix}/pconrad/simple" />
-   <property name="pconradAdvanced" value="${packagePrefix}/pconrad/advanced" />
-   <property name="mySimple" value="${packagePrefix}/${usernameWithUnderscores}}/simple" />
-   <property name="myAdvanced" value="${packagePrefix}/${usernameWithUnderscores}}/advanced" />
-
+   <property name="pconradPackage" value="${packagePrefix}.pconrad" />
+   <property name="myPackage" 
+	     value="${packagePrefix}.${usernameWithUnderscores}" />
    
    <property name="webRoot" value="${env.HOME}/public_html/cs56" />
    <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
@@ -106,9 +105,21 @@
   </target>
 
 
-  <target name="pconradSimpleGui" depends="compile" 
+  <target name="pconradSimpleGui1" depends="compile" 
 	  description="run simpleGui1 from pconrad subdirectory">
-    <java fork="true" classpathref="project.class.path" classname="${pconradSimple}/SimpleGui1" />
+    <java fork="true" classpathref="project.class.path" 
+	  classname="${pconradPackage}.SimpleGui1" />
+  </target>
+
+  <target name="mySimpleGui1" depends="compile" 
+	  description="run simpleGui1 from pconrad subdirectory">
+    <java fork="true" classpathref="project.class.path" 
+	  classname="${myPackage}.SimpleGui1" />
+  </target>
+
+  <target name="pconradPV" depends="compile" 
+	  description="run  from PictureViewer from pconrad subdirectory">
+    <java fork="true" classpathref="project.class.path" classname="${pconradPackage}.simple.PictureViewer" />
   </target>
 
 </project>
