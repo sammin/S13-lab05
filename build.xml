@@ -137,7 +137,7 @@
      <fileset dir="images"/> 
     </copy> 
     
-    <echo>images/pic1 online at ${imagesURL}/images/pic1</echo>
+    <echo>images/pic1 online at ${imagesURL}/images/pic1.png</echo>
   </target>
 
   <target name="pconradWPTF2" depends="compile" 
@@ -152,7 +152,7 @@
      <fileset dir="images"/> 
     </copy> 
     
-    <echo>images/pic2 online at ${imagesURL}/images/pic2</echo>
+    <echo>images/pic2 online at ${imagesURL}/images/pic2.png</echo>
   </target>
   <target name="pconradWPTF3" depends="compile" 
 	  description="run WritePictureToFile from pconrad;create images/pic3">
@@ -166,7 +166,7 @@
      <fileset dir="images"/> 
     </copy> 
     
-    <echo>images/pic3 online at ${imagesURL}/images/pic3</echo>
+    <echo>images/pic3 online at ${imagesURL}/images/pic3.png</echo>
   </target>
 
   <target name="myPV" depends="compile" 
@@ -199,47 +199,47 @@
   </target>
 
   <target name="myWPTF1" depends="compile" 
-	  description="run WritePictureToFile from my code;create images/pic1">
+	  description="run WritePictureToFile from my code;create images/mypic1">
     <mkdir dir="images" />
     <java fork="true" classpathref="project.class.path" classname="${myPackage}.advanced.WritePictureToFile" >
      <arg value="1" />
-     <arg value="images/pic1" />
+     <arg value="images/mypic1" />
     </java>
         
     <copy todir="${imagesDest}" > 
      <fileset dir="images"/> 
     </copy> 
     
-    <echo>images/pic1 online at ${imagesURL}/images/pic1</echo>
+    <echo>images/mypic1 online at ${imagesURL}/images/mypic1.png</echo>
   </target>
 
   <target name="myWPTF2" depends="compile" 
-	  description="run WritePictureToFile from my code;create images/pic2">
+	  description="run WritePictureToFile from my code;create images/mypic2">
     <mkdir dir="images" />
     <java fork="true" classpathref="project.class.path" classname="${myPackage}.advanced.WritePictureToFile" >
      <arg value="2" />
-     <arg value="images/pic2" />
+     <arg value="images/mypic2" />
     </java>
         
     <copy todir="${imagesDest}" > 
      <fileset dir="images"/> 
     </copy> 
     
-    <echo>images/pic2 online at ${imagesURL}/images/pic2</echo>
+    <echo>images/mypic2 online at ${imagesURL}/images/mypic2.png</echo>
   </target>
   <target name="myWPTF3" depends="compile" 
-	  description="run WritePictureToFile from my code;create images/pic3">
+	  description="run WritePictureToFile from my code;create images/mypic3">
     <mkdir dir="images" />
     <java fork="true" classpathref="project.class.path" classname="${myPackage}.advanced.WritePictureToFile" >
      <arg value="3" />
-     <arg value="images/pic3" />
+     <arg value="images/mypic3" />
     </java>
         
     <copy todir="${imagesDest}" > 
      <fileset dir="images"/> 
     </copy> 
     
-    <echo>images/pic3 online at ${imagesURL}/images/pic3</echo>
+    <echo>images/mypic3 online at ${imagesURL}/images/mypic3.png</echo>
   </target>
 
 
