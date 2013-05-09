@@ -22,9 +22,14 @@ public class WritePictureToFile
 {
     public static void usage()
     {
-       System.out.println("Usage: java WritePictureToFile mypicture");
+       System.out.println("Usage: java WritePictureToFile whichImage mypic");
        // @@@ modify the next line to describe your picture
-       System.out.println("     Writes a lovely picture of coffee cups to mypicture.png"); 
+       System.out.println(" whichImage should be 1,2 or 3");
+       System.out.println(" whichImage chooses from drawPicture1, 2 or 3");
+       System.out.println(" .png gets added to the filename");
+       System.out.println("  e.g. if you pass mypic, filename is mypic.png"); 
+       System.out.println("Example: java WritePictureToFile 3 foo");
+       System.out.println(" produces foo.png from drawPicture3");
     }
 
     /** Write the drawFourCoffeeCups picture to a file.
@@ -36,14 +41,15 @@ public class WritePictureToFile
    public static void main(String[] args)
    {
      // make sure we have exactly one command line argument  
-     if (args.length != 1)
+     if (args.length != 2)
      {
         usage();
         System.exit(1);
      }
-        
-     String outputfileName = args[0]; // the first command line argument
-     
+
+     String whichPicture = args[0]; // first command line arg is 1, 2, 3 
+     String outputfileName = args[1]; // second command line arg is which pic
+
      final int WIDTH = 640;
      final int HEIGHT = 480;
          
@@ -53,14 +59,25 @@ public class WritePictureToFile
      BufferedImage bi = 
         new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB); 
 
+     // g2 is a Graphics2D object that will draw into the BufferedImage object
+
      Graphics2D g2 = bi.createGraphics();
       
-     AllMyDrawings.drawPicture2(g2); // draw four coffee cups
-      
+     if (whichPicture.equals("1")) {
+	 AllMyDrawings.drawPicture1(g2);
+     } else if (whichPicture.equals("2")) {
+	 AllMyDrawings.drawPicture2(g2);
+     } else if (whichPicture.equals("3")) {
+      	 AllMyDrawings.drawPicture2(g2);
+     }
+
      final String imageType = "png"; // choices: "gif", "png", "jpg"
       
-     String fullFileName = ""; // must declare outside the try block, so we can see it inside the catch block
-     
+     // We must declare this variable outside the try block, 
+     // so we can see it inside the catch block
+
+     String fullFileName = ""; 
+    
      try 
      {
         fullFileName = outputfileName + "." + imageType; // make the file name

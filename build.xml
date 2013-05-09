@@ -15,9 +15,11 @@
    
    <property name="webRoot" value="${env.HOME}/public_html/cs56" />
    <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
-   <property name="projectName" value="lab04" /> 
+   <property name="projectName" value="lab05" /> 
    <property name="javadocDest" value="${webRoot}/${projectName}/javadoc" /> 
    <property name="javadocURL" value="${webBaseURL}/${projectName}/javadoc" /> 
+   <property name="imagesDest" value="${webRoot}/${projectName}/images" /> 
+   <property name="imagesURL" value="${webBaseURL}/${projectName}/images" /> 
    <property name="javadocLink" value="http://java.sun.com/javase/7/docs/api/" />
    <path id="project.class.path">
          <pathelement location="build"/>
@@ -123,6 +125,50 @@
     </java>
   </target>
 
+  <target name="pconradWPTF1" depends="compile" 
+	  description="run WritePictureToFile from pconrad;create images/pic1">
+    <mkdir dir="images" />
+    <java fork="true" classpathref="project.class.path" classname="${pconradPackage}.advanced.WritePictureToFile" >
+     <arg value="1" />
+     <arg value="images/pic1" />
+    </java>
+        
+    <copy todir="${imagesDest}" > 
+     <fileset dir="images"/> 
+    </copy> 
+    
+    <echo>images/pic1 online at ${imagesURL}/images/pic1</echo>
+  </target>
+
+  <target name="pconradWPTF2" depends="compile" 
+	  description="run WritePictureToFile from pconrad;create images/pic2">
+    <mkdir dir="images" />
+    <java fork="true" classpathref="project.class.path" classname="${pconradPackage}.advanced.WritePictureToFile" >
+     <arg value="2" />
+     <arg value="images/pic2" />
+    </java>
+        
+    <copy todir="${imagesDest}" > 
+     <fileset dir="images"/> 
+    </copy> 
+    
+    <echo>images/pic2 online at ${imagesURL}/images/pic2</echo>
+  </target>
+  <target name="pconradWPTF3" depends="compile" 
+	  description="run WritePictureToFile from pconrad;create images/pic3">
+    <mkdir dir="images" />
+    <java fork="true" classpathref="project.class.path" classname="${pconradPackage}.advanced.WritePictureToFile" >
+     <arg value="3" />
+     <arg value="images/pic3" />
+    </java>
+        
+    <copy todir="${imagesDest}" > 
+     <fileset dir="images"/> 
+    </copy> 
+    
+    <echo>images/pic3 online at ${imagesURL}/images/pic3</echo>
+  </target>
+
   <target name="myPV" depends="compile" 
 	  description="run from PictureViewer from ${env.USER} subdirectory">
     <java fork="true" 
@@ -151,5 +197,50 @@
       <arg value="3" />
     </java>
   </target>
+
+  <target name="myWPTF1" depends="compile" 
+	  description="run WritePictureToFile from my code;create images/pic1">
+    <mkdir dir="images" />
+    <java fork="true" classpathref="project.class.path" classname="${myPackage}.advanced.WritePictureToFile" >
+     <arg value="1" />
+     <arg value="images/pic1" />
+    </java>
+        
+    <copy todir="${imagesDest}" > 
+     <fileset dir="images"/> 
+    </copy> 
+    
+    <echo>images/pic1 online at ${imagesURL}/images/pic1</echo>
+  </target>
+
+  <target name="myWPTF2" depends="compile" 
+	  description="run WritePictureToFile from my code;create images/pic2">
+    <mkdir dir="images" />
+    <java fork="true" classpathref="project.class.path" classname="${myPackage}.advanced.WritePictureToFile" >
+     <arg value="2" />
+     <arg value="images/pic2" />
+    </java>
+        
+    <copy todir="${imagesDest}" > 
+     <fileset dir="images"/> 
+    </copy> 
+    
+    <echo>images/pic2 online at ${imagesURL}/images/pic2</echo>
+  </target>
+  <target name="myWPTF3" depends="compile" 
+	  description="run WritePictureToFile from my code;create images/pic3">
+    <mkdir dir="images" />
+    <java fork="true" classpathref="project.class.path" classname="${myPackage}.advanced.WritePictureToFile" >
+     <arg value="3" />
+     <arg value="images/pic3" />
+    </java>
+        
+    <copy todir="${imagesDest}" > 
+     <fileset dir="images"/> 
+    </copy> 
+    
+    <echo>images/pic3 online at ${imagesURL}/images/pic3</echo>
+  </target>
+
 
 </project>

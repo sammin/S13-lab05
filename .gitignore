@@ -1,4 +1,7 @@
+
 *.class
+javadoc/*
+images/*
 
 # Package Files #
 *.jar
